@@ -1,0 +1,6 @@
+{
+  "name": "basicsation-dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  }
+}
