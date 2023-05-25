@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:stretch
 
 ENV container=docker TERM=xterm LC_ALL=en_US LANGUAGE=en_US LANG=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
