@@ -1,6 +1,8 @@
 {
-  "name": "basicsation-dev",
-  "build": {
-    "dockerfile": "Dockerfile"
-  }
+    "image":"mcr.microsoft.com/vscode/devcontainers/universal:0-stretch",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+    },
+    "remoteUser": "codespace",
+    "overrideCommand": false,
 }
