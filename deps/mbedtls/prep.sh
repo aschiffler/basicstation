@@ -30,7 +30,7 @@ set -e
 cd $(dirname $0)
 
 if [[ ! -d git-repo ]]; then
-    git clone -b mbedtls-2.28.0 --single-branch --depth 1 https://github.com/ARMmbed/mbedtls.git git-repo
+    git clone -b mbedtls-2.6.0 --single-branch --depth 1 https://github.com/ARMmbed/mbedtls.git git-repo
 fi
 
 if [[ -z "$platform" ]] || [[ -z "$variant" ]]; then
