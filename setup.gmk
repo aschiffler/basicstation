@@ -43,7 +43,7 @@ LOCAL_ARCH := $(shell gcc -dumpmachine)
 ARCH.linux   = x86_64-linux-gnu
 ARCH.linuxV2 = x86_64-linux-gnu
 ARCH.linuxpico = x86_64-linux-gnu
-ARCH.corecell  = arm-linux-gnueabihf
+ARCH.corecell  = aarch64-linux-gnu
 ARCH.rpi     = arm-linux-gnueabihf
 ARCH.kerlink = arm-klk-linux-gnueabi
 ARCH=${ARCH.${platform}}
@@ -52,18 +52,7 @@ export TDfull := $(shell cd ${TD} && pwd)
 TOOLCHAIN=${HOME}/toolchain-${platform}
 
 
-ifeq (,$(wildcard ${TOOLCHAIN}))
-# No toolchain for cross compile - only ok if we can build locally
-ifeq (${LOCAL_ARCH},${ARCH})
-TOOLPREFIX=
-else
-$(warning No toolchain for platform '${platform}' and local arch is not '${ARCH}')
-TOOLPREFIX=NO-TOOLCHAIN-FOUND-
-endif
-else
-# Found a matching cross compile toolchain
-TOOLPREFIX=${TOOLCHAIN}/bin/${ARCH}-
-endif
+TOOLPREFIX=/usr/bin/${ARCH}-
 
 CC=${TOOLPREFIX}gcc
 LD=${TOOLPREFIX}ld
@@ -73,7 +62,7 @@ OC=${TOOLPREFIX}objcopy
 
 ifeq (kerlink,${platform})
 # Needed for loader to find libmpfr.so.4
-export LD_LIBRARY_PATH=${TOOLCHAIN}/usr/lib
+export LD_LIBRARY_PATH=/usr/lib
 endif
 
 
